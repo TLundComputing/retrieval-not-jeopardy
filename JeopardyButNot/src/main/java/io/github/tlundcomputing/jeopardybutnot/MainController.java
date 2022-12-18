@@ -6,10 +6,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MainController {
 
@@ -38,6 +39,37 @@ public class MainController {
             infoBox.setHeaderText("Error");
             infoBox.setContentText("An error has occurred:\n" + e.getMessage());
             infoBox.showAndWait();
+        }
+    }
+
+    @FXML
+    protected void loadTemplate(){
+        Alert loadInfo = new Alert(Alert.AlertType.INFORMATION);
+        loadInfo.setTitle("Load up your completed Template");
+        loadInfo.setHeaderText("Time to retrieve your template file");
+        loadInfo.setContentText("In the next window navigate to and locate the template file you have completed.");
+        loadInfo.showAndWait();
+        try{
+            FileChooser save = new FileChooser();
+            save.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV File", "*.csv"));
+            File template = save.showOpenDialog(title.getScene().getWindow());
+            FileReader read = new FileReader(template);
+            BufferedReader buff = new BufferedReader(read);
+            Scanner scan = new Scanner(buff);
+            ArrayList<String> data = new ArrayList<>();
+            while(scan.hasNextLine()){
+                data.add(scan.nextLine().trim());
+            }
+            buff.close();
+            read.close();
+            loadInfo.setHeaderText("Success");
+            loadInfo.setContentText("Template upload is complete");
+            loadInfo.showAndWait();
+        } catch(IOException e){
+            loadInfo.setAlertType(Alert.AlertType.ERROR);
+            loadInfo.setHeaderText("Error");
+            loadInfo.setContentText("An error has occured\n" + e.getMessage());
+            loadInfo.showAndWait();
         }
     }
 

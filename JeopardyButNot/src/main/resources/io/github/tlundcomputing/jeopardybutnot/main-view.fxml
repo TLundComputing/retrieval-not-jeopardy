@@ -14,7 +14,7 @@
 
     <Label fx:id="title" text="Jeopardy But Not!"/>
     <Button text="Create New" onAction="#getTemplate" />
-    <Button text="Load previous" />
+    <Button text="Load previous" onAction="#loadTemplate" />
 
     <stylesheets>
         <URL value="@style.css" />
