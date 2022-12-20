@@ -63,9 +63,9 @@
                             <mainClass>
                                 io.github.tlundcomputing.jeopardybutnot/io.github.tlundcomputing.jeopardybutnot.MainApplication
                             </mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
+                            <launcher>Retrieval Game</launcher>
+                            <jlinkZipName>Retrieval Game</jlinkZipName>
+                            <jlinkImageName>Retrieval Game</jlinkImageName>
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
