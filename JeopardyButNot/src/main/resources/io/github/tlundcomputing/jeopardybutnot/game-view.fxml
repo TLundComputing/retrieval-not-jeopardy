@@ -18,6 +18,9 @@
 
     <Label fx:id="title" text="Game Grid View"/>
     <Label fx:id="dataToShow" />
+    <GridPane fx:id="pane" hgap="20" vgap="20">
+
+    </GridPane>
 
     <stylesheets>
         <URL value="@style.css" />
