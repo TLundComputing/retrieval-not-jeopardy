@@ -85,13 +85,17 @@ public class MainController {
         Stage stage = (Stage) title.getScene().getWindow();
         stage.close();
         try{
-            stage.setUserData(dataToSend);
-            Parent root = FXMLLoader.load(MainController.class.getResource("game-view.fxml"));
+            //stage.setUserData(dataToSend);
+            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("game-view.fxml"));
+            Parent root = loader.load();
+            GameViewController controller = loader.getController();
+            controller.setData(dataToSend);
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e){
             System.err.println(String.format("Error: %s", e.getMessage()));
+            e.printStackTrace();
         }
     }
 

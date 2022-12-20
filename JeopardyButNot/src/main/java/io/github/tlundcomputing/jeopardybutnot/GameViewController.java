@@ -14,15 +14,8 @@ public class GameViewController {
 
     private ArrayList<String> recievedData;
 
-    @FXML
-    private void recieveData(){
-        Stage stage = (Stage) dataToShow.getScene().getWindow();
-        recievedData = (ArrayList<String>) stage.getUserData();
-    }
-
-    @FXML
-    private void initialize(){
-        recieveData();
+    public void setData(ArrayList<String> theData){
+        recievedData = theData;
         dataToShow.setText(Arrays.toString(recievedData.toArray()));
     }
 
