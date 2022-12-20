@@ -17,12 +17,11 @@
     </padding>
 
     <Label fx:id="title" text="Game Grid View"/>
-    <Label fx:id="dataToShow" />
-    <GridPane fx:id="pane" hgap="20" vgap="20">
+    <GridPane fx:id="pane" hgap="20" vgap="20" alignment="CENTER">
 
     </GridPane>
 
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@gameStyle.css" />
     </stylesheets>
 </VBox>

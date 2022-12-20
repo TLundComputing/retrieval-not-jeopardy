@@ -1,0 +1,7 @@
+#title {
+    -fx-font-size: 24pt;
+}
+
+MyButton, Label {
+    -fx-font-size: 20pt;
+}
