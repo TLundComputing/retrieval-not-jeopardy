@@ -2,9 +2,13 @@ package io.github.tlundcomputing.jeopardybutnot;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -16,6 +20,8 @@ public class MainController {
 
     @FXML
     private Label title;
+
+    private ArrayList<String> dataToSend;
 
     @FXML
     protected void getTemplate(){
@@ -65,11 +71,27 @@ public class MainController {
             loadInfo.setHeaderText("Success");
             loadInfo.setContentText("Template upload is complete");
             loadInfo.showAndWait();
+            dataToSend = data;
+            sendData();
         } catch(IOException e){
             loadInfo.setAlertType(Alert.AlertType.ERROR);
             loadInfo.setHeaderText("Error");
             loadInfo.setContentText("An error has occured\n" + e.getMessage());
             loadInfo.showAndWait();
+        }
+    }
+
+    protected void sendData(){
+        Stage stage = (Stage) title.getScene().getWindow();
+        stage.close();
+        try{
+            stage.setUserData(dataToSend);
+            Parent root = FXMLLoader.load(MainController.class.getResource("game-view.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e){
+            System.err.println(String.format("Error: %s", e.getMessage()));
         }
     }
 
