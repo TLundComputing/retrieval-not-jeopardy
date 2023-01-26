@@ -30,7 +30,7 @@ public class MainController {
     private RadioButton jeopardyRadio;
 
     private ArrayList<String> dataToSend;
-
+    ToggleGroup group = new ToggleGroup();
 
     @FXML
     protected void getTemplate(){
@@ -43,7 +43,13 @@ public class MainController {
             FileChooser choice = new FileChooser();
             choice.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV File", "*.csv"));
             File file = choice.showSaveDialog(title.getScene().getWindow());
-            File template = new File(MainController.class.getResource("Game Template.csv").toURI());
+            RadioButton selected = (RadioButton) group.getSelectedToggle();
+            File template;
+            if(selected.getText().equalsIgnoreCase("Retrieval Grid")){
+                template = new File(MainController.class.getResource("Grid Template.csv").toURI());
+            } else {
+                template = new File(MainController.class.getResource("Game Template.csv").toURI());
+            }
             Files.copy(template.toPath(), file.toPath());
             infoBox.setAlertType(Alert.AlertType.INFORMATION);
             infoBox.setHeaderText("Success");
@@ -78,7 +84,7 @@ public class MainController {
             buff.close();
             read.close();
             loadInfo.setHeaderText("Success");
-            loadInfo.setContentText("Template upload is complete");
+            loadInfo.setContentText("Template upload is complete, the document will now be analysed");
             loadInfo.showAndWait();
             dataToSend = data;
             sendData();
@@ -110,7 +116,7 @@ public class MainController {
 
     @FXML
     private void initialize(){
-        ToggleGroup group = new ToggleGroup();
+
         gridRadio.setToggleGroup(group);
         jeopardyRadio.setToggleGroup(group);
     }
