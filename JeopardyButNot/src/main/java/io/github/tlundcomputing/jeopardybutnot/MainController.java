@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -21,7 +23,14 @@ public class MainController {
     @FXML
     private Label title;
 
+    @FXML
+    private RadioButton gridRadio;
+
+    @FXML
+    private RadioButton jeopardyRadio;
+
     private ArrayList<String> dataToSend;
+
 
     @FXML
     protected void getTemplate(){
@@ -97,6 +106,13 @@ public class MainController {
             System.err.println(String.format("Error: %s", e.getMessage()));
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void initialize(){
+        ToggleGroup group = new ToggleGroup();
+        gridRadio.setToggleGroup(group);
+        jeopardyRadio.setToggleGroup(group);
     }
 
 }

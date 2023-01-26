@@ -6,13 +6,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.HBox?>
 <VBox spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="io.github.tlundcomputing.jeopardybutnot.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label fx:id="title" text="Jeopardy But Not!"/>
+    <Label fx:id="title" text="Retrieval Practice"/>
+    <HBox spacing="10">
+        <RadioButton fx:id="gridRadio" text="Retrieval Grid" selected="true"/>
+        <RadioButton fx:id="jeopardyRadio" text="Jeopardy But Not"/>
+    </HBox>
     <Button text="Create New" onAction="#getTemplate" />
     <Button text="Load previous" onAction="#loadTemplate" />
 
